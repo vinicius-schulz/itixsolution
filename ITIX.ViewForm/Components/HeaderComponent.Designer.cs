@@ -53,10 +53,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.textBoxId);
             this.Controls.Add(this.labelId);
             this.Name = "HeaderComponent";
-            this.Size = new System.Drawing.Size(533, 60);
+            this.Size = new System.Drawing.Size(529, 56);
             this.Load += new System.EventHandler(this.HeaderComponent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -16,5 +16,10 @@ namespace ITIX.ViewForm
         {
             InitializeComponent();
         }
+
+        private void VendasPedidosVendaUI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

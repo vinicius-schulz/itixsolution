@@ -18,8 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITIX.ViewForm", "ITIX.ViewF
 		{D01472A3-290B-439E-9718-E1EC99421067} = {D01472A3-290B-439E-9718-E1EC99421067}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITIX.Component", "ITIX.Component\ITIX.Component.csproj", "{B8BF0ABF-CE3B-4346-B498-3E7F8DC85FB4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,10 +48,6 @@ Global
 		{08D84FB2-2671-47DF-BCD0-343B24FFB855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08D84FB2-2671-47DF-BCD0-343B24FFB855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08D84FB2-2671-47DF-BCD0-343B24FFB855}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B8BF0ABF-CE3B-4346-B498-3E7F8DC85FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B8BF0ABF-CE3B-4346-B498-3E7F8DC85FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B8BF0ABF-CE3B-4346-B498-3E7F8DC85FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B8BF0ABF-CE3B-4346-B498-3E7F8DC85FB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

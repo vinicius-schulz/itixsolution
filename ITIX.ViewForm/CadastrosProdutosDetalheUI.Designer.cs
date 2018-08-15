@@ -39,13 +39,9 @@
             this.labelPesoLiquido = new System.Windows.Forms.Label();
             this.labelPreco = new System.Windows.Forms.Label();
             this.labelDescricao = new System.Windows.Forms.Label();
-            this.panelBotoes = new System.Windows.Forms.Panel();
-            this.buttonSair = new System.Windows.Forms.Button();
-            this.buttonEditar = new System.Windows.Forms.Button();
-            this.buttonSalvar = new System.Windows.Forms.Button();
+            this.footerComponent = new ITIX.ViewForm.Components.FooterComponent();
             this.headerComponent = new ITIX.ViewForm.Components.HeaderComponent();
             this.panelCampos.SuspendLayout();
-            this.panelBotoes.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelNomeProduto
@@ -62,6 +58,7 @@
             this.panelCampos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelCampos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelCampos.Controls.Add(this.textBoxPesoBruto);
             this.panelCampos.Controls.Add(this.textBoxPesoLiquido);
             this.panelCampos.Controls.Add(this.textBoxPreco);
@@ -74,7 +71,7 @@
             this.panelCampos.Controls.Add(this.labelNomeProduto);
             this.panelCampos.Location = new System.Drawing.Point(12, 75);
             this.panelCampos.Name = "panelCampos";
-            this.panelCampos.Size = new System.Drawing.Size(594, 314);
+            this.panelCampos.Size = new System.Drawing.Size(612, 189);
             this.panelCampos.TabIndex = 1;
             // 
             // textBoxPesoBruto
@@ -151,70 +148,39 @@
             this.labelDescricao.TabIndex = 2;
             this.labelDescricao.Text = "Descrição";
             // 
-            // panelBotoes
+            // footerComponent
             // 
-            this.panelBotoes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.footerComponent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelBotoes.Controls.Add(this.buttonSair);
-            this.panelBotoes.Controls.Add(this.buttonEditar);
-            this.panelBotoes.Controls.Add(this.buttonSalvar);
-            this.panelBotoes.Location = new System.Drawing.Point(12, 395);
-            this.panelBotoes.Name = "panelBotoes";
-            this.panelBotoes.Size = new System.Drawing.Size(594, 57);
-            this.panelBotoes.TabIndex = 2;
-            // 
-            // buttonSair
-            // 
-            this.buttonSair.Location = new System.Drawing.Point(178, 16);
-            this.buttonSair.Name = "buttonSair";
-            this.buttonSair.Size = new System.Drawing.Size(75, 23);
-            this.buttonSair.TabIndex = 2;
-            this.buttonSair.Text = "Sair";
-            this.buttonSair.UseVisualStyleBackColor = true;
-            this.buttonSair.Click += new System.EventHandler(this.buttonSair_Click);
-            // 
-            // buttonEditar
-            // 
-            this.buttonEditar.Location = new System.Drawing.Point(97, 16);
-            this.buttonEditar.Name = "buttonEditar";
-            this.buttonEditar.Size = new System.Drawing.Size(75, 23);
-            this.buttonEditar.TabIndex = 1;
-            this.buttonEditar.Text = "Editar";
-            this.buttonEditar.UseVisualStyleBackColor = true;
-            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
-            // 
-            // buttonSalvar
-            // 
-            this.buttonSalvar.Location = new System.Drawing.Point(16, 16);
-            this.buttonSalvar.Name = "buttonSalvar";
-            this.buttonSalvar.Size = new System.Drawing.Size(75, 23);
-            this.buttonSalvar.TabIndex = 0;
-            this.buttonSalvar.Text = "Salvar";
-            this.buttonSalvar.UseVisualStyleBackColor = true;
-            this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
+            this.footerComponent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.footerComponent.Location = new System.Drawing.Point(12, 270);
+            this.footerComponent.Name = "footerComponent";
+            this.footerComponent.Size = new System.Drawing.Size(612, 52);
+            this.footerComponent.TabIndex = 4;
             // 
             // headerComponent
             // 
             this.headerComponent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.headerComponent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.headerComponent.Location = new System.Drawing.Point(12, 9);
             this.headerComponent.Name = "headerComponent";
-            this.headerComponent.Size = new System.Drawing.Size(594, 60);
+            this.headerComponent.Size = new System.Drawing.Size(612, 60);
             this.headerComponent.TabIndex = 3;
             // 
             // CadastrosProdutosDetalheUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 464);
+            this.ClientSize = new System.Drawing.Size(636, 339);
+            this.Controls.Add(this.footerComponent);
             this.Controls.Add(this.headerComponent);
-            this.Controls.Add(this.panelBotoes);
             this.Controls.Add(this.panelCampos);
             this.Name = "CadastrosProdutosDetalheUI";
-            this.Text = "CadastrosProdutosDetalheUI";
+            this.Text = "Detalhe de Produto";
+            this.Load += new System.EventHandler(this.CadastrosProdutosDetalheUI_Load);
             this.panelCampos.ResumeLayout(false);
             this.panelCampos.PerformLayout();
-            this.panelBotoes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -232,10 +198,7 @@
         private System.Windows.Forms.TextBox textBoxNomeProduto;
         private System.Windows.Forms.Label labelPesoBruto;
         private System.Windows.Forms.Label labelPesoLiquido;
-        private System.Windows.Forms.Panel panelBotoes;
-        private System.Windows.Forms.Button buttonSalvar;
-        private System.Windows.Forms.Button buttonEditar;
-        private System.Windows.Forms.Button buttonSair;
         private Components.HeaderComponent headerComponent;
+        private Components.FooterComponent footerComponent;
     }
 }

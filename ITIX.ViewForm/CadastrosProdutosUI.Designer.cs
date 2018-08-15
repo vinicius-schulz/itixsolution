@@ -36,13 +36,13 @@
             this.textBoxNomeProduto = new System.Windows.Forms.TextBox();
             this.labelNomeProduto = new System.Windows.Forms.Label();
             this.dataGridViewProdutos = new System.Windows.Forms.DataGridView();
+            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeProdutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pesoLiquidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pesoBrutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.produtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtoBindingSource)).BeginInit();
@@ -52,6 +52,7 @@
             // 
             this.panelFilters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelFilters.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelFilters.Controls.Add(this.buttonExcluir);
             this.panelFilters.Controls.Add(this.buttonCriarProduto);
             this.panelFilters.Controls.Add(this.buttonFiltrar);
@@ -59,13 +60,13 @@
             this.panelFilters.Controls.Add(this.labelNomeProduto);
             this.panelFilters.Location = new System.Drawing.Point(12, 12);
             this.panelFilters.Name = "panelFilters";
-            this.panelFilters.Size = new System.Drawing.Size(776, 53);
+            this.panelFilters.Size = new System.Drawing.Size(668, 53);
             this.panelFilters.TabIndex = 0;
             // 
             // buttonExcluir
             // 
             this.buttonExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExcluir.Location = new System.Drawing.Point(617, 15);
+            this.buttonExcluir.Location = new System.Drawing.Point(505, 15);
             this.buttonExcluir.Name = "buttonExcluir";
             this.buttonExcluir.Size = new System.Drawing.Size(75, 23);
             this.buttonExcluir.TabIndex = 4;
@@ -76,7 +77,7 @@
             // buttonCriarProduto
             // 
             this.buttonCriarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCriarProduto.Location = new System.Drawing.Point(698, 15);
+            this.buttonCriarProduto.Location = new System.Drawing.Point(586, 15);
             this.buttonCriarProduto.Name = "buttonCriarProduto";
             this.buttonCriarProduto.Size = new System.Drawing.Size(75, 23);
             this.buttonCriarProduto.TabIndex = 3;
@@ -112,6 +113,7 @@
             // 
             // dataGridViewProdutos
             // 
+            this.dataGridViewProdutos.AllowUserToAddRows = false;
             this.dataGridViewProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -127,8 +129,12 @@
             this.dataGridViewProdutos.DataSource = this.produtoBindingSource;
             this.dataGridViewProdutos.Location = new System.Drawing.Point(12, 71);
             this.dataGridViewProdutos.Name = "dataGridViewProdutos";
-            this.dataGridViewProdutos.Size = new System.Drawing.Size(776, 367);
+            this.dataGridViewProdutos.Size = new System.Drawing.Size(668, 367);
             this.dataGridViewProdutos.TabIndex = 1;
+            // 
+            // produtoBindingSource
+            // 
+            this.produtoBindingSource.DataSource = typeof(ITIX.Core.Model.Produto);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -158,28 +164,25 @@
             // pesoLiquidoDataGridViewTextBoxColumn
             // 
             this.pesoLiquidoDataGridViewTextBoxColumn.DataPropertyName = "PesoLiquido";
-            this.pesoLiquidoDataGridViewTextBoxColumn.HeaderText = "PesoLiquido";
+            this.pesoLiquidoDataGridViewTextBoxColumn.HeaderText = "Peso Líquido";
             this.pesoLiquidoDataGridViewTextBoxColumn.Name = "pesoLiquidoDataGridViewTextBoxColumn";
             // 
             // pesoBrutoDataGridViewTextBoxColumn
             // 
             this.pesoBrutoDataGridViewTextBoxColumn.DataPropertyName = "PesoBruto";
-            this.pesoBrutoDataGridViewTextBoxColumn.HeaderText = "PesoBruto";
+            this.pesoBrutoDataGridViewTextBoxColumn.HeaderText = "Peso Bruto";
             this.pesoBrutoDataGridViewTextBoxColumn.Name = "pesoBrutoDataGridViewTextBoxColumn";
-            // 
-            // produtoBindingSource
-            // 
-            this.produtoBindingSource.DataSource = typeof(ITIX.Core.Model.Produto);
             // 
             // CadastrosProdutosUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(692, 450);
             this.Controls.Add(this.dataGridViewProdutos);
             this.Controls.Add(this.panelFilters);
             this.Name = "CadastrosProdutosUI";
             this.Text = "Produtos";
+            this.Load += new System.EventHandler(this.CadastrosProdutosUI_Load);
             this.panelFilters.ResumeLayout(false);
             this.panelFilters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProdutos)).EndInit();
@@ -192,17 +195,17 @@
 
         private System.Windows.Forms.Panel panelFilters;
         private System.Windows.Forms.DataGridView dataGridViewProdutos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeProdutoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricaoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pesoLiquidoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pesoBrutoDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource produtoBindingSource;
         private System.Windows.Forms.Button buttonExcluir;
         private System.Windows.Forms.Button buttonCriarProduto;
         private System.Windows.Forms.Button buttonFiltrar;
         private System.Windows.Forms.TextBox textBoxNomeProduto;
         private System.Windows.Forms.Label labelNomeProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeProdutoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pesoLiquidoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pesoBrutoDataGridViewTextBoxColumn;
     }
 }

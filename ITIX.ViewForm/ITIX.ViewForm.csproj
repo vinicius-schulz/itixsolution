@@ -70,6 +70,12 @@
     <Compile Include="CadastrosProdutosUI.Designer.cs">
       <DependentUpon>CadastrosProdutosUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\FooterComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\FooterComponent.Designer.cs">
+      <DependentUpon>FooterComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\HeaderComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     <EmbeddedResource Include="CadastrosProdutosUI.resx">
       <DependentUpon>CadastrosProdutosUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Components\FooterComponent.resx">
+      <DependentUpon>FooterComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Components\HeaderComponent.resx">
       <DependentUpon>HeaderComponent.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,7 +126,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VendasPedidosVendaUI.resx">
+      <DependentUpon>VendasPedidosVendaUI.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ITIX.Core.Model.Pedido.datasource" />
     <None Include="Properties\DataSources\ITIX.Core.Model.Produto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
