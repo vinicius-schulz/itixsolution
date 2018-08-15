@@ -47,6 +47,16 @@ namespace ITIX.Application.Business.Base
             this.Dao.Save();
         }
 
+        public K Get(int id)
+        {
+            return this.Dao.Get(id);
+        }
+
+        public List<K> GetAll()
+        {
+            return this.Dao.All().ToList();
+        }
+
         protected abstract void Validate(K entity);
     }
 }

@@ -177,7 +177,7 @@
             this.Controls.Add(this.headerComponent);
             this.Controls.Add(this.panelCampos);
             this.Name = "CadastrosProdutosDetalheUI";
-            this.Text = "Detalhe de Produto";
+            this.Text = "Detalhe do Produto";
             this.Load += new System.EventHandler(this.CadastrosProdutosDetalheUI_Load);
             this.panelCampos.ResumeLayout(false);
             this.panelCampos.PerformLayout();

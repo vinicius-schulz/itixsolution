@@ -126,10 +126,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VendasPedidosVendaDetalhesUI.resx">
+      <DependentUpon>VendasPedidosVendaDetalhesUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VendasPedidosVendaUI.resx">
       <DependentUpon>VendasPedidosVendaUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ITIX.Core.Model.ItemPedido.datasource" />
     <None Include="Properties\DataSources\ITIX.Core.Model.Pedido.datasource" />
     <None Include="Properties\DataSources\ITIX.Core.Model.Produto.datasource" />
     <None Include="Properties\Settings.settings">

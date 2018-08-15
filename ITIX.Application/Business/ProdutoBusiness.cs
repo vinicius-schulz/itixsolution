@@ -30,16 +30,6 @@ namespace ITIX.Application.Business
             return produto;
         }
 
-        public List<Produto> Get()
-        {
-            return this.Dao.All().ToList();
-        }
-
-        public List<Produto> Get(String nomeProduto)
-        {
-            return this.Dao.All().Where(p => p.NomeProduto == nomeProduto).ToList();
-        }
-
         protected override void Validate(Produto entity)
         {
             if (entity.NomeProduto.Trim() == "")

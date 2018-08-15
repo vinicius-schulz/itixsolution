@@ -77,7 +77,7 @@ namespace ITIX.ViewForm
         {
             try
             {
-                var list = bns.Get();
+                var list = bns.GetAll();
                 loadGrid(list);
             }
             catch (Exception ex)

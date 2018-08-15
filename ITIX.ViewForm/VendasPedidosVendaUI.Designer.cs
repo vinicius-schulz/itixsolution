@@ -37,9 +37,11 @@
             this.subtotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comentarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelFilters = new System.Windows.Forms.Panel();
-            this.labelId = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelDescricao = new System.Windows.Forms.Label();
+            this.textBoxDescricao = new System.Windows.Forms.TextBox();
             this.buttonFiltrar = new System.Windows.Forms.Button();
+            this.buttonExcluir = new System.Windows.Forms.Button();
+            this.buttonCriar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPedidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pedidoBindingSource)).BeginInit();
             this.panelFilters.SuspendLayout();
@@ -105,38 +107,63 @@
             this.panelFilters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelFilters.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelFilters.Controls.Add(this.buttonCriar);
+            this.panelFilters.Controls.Add(this.buttonExcluir);
             this.panelFilters.Controls.Add(this.buttonFiltrar);
-            this.panelFilters.Controls.Add(this.textBox1);
-            this.panelFilters.Controls.Add(this.labelId);
+            this.panelFilters.Controls.Add(this.textBoxDescricao);
+            this.panelFilters.Controls.Add(this.labelDescricao);
             this.panelFilters.Location = new System.Drawing.Point(12, 12);
             this.panelFilters.Name = "panelFilters";
             this.panelFilters.Size = new System.Drawing.Size(776, 48);
             this.panelFilters.TabIndex = 1;
             // 
-            // labelId
+            // labelDescricao
             // 
-            this.labelId.AutoSize = true;
-            this.labelId.Location = new System.Drawing.Point(3, 14);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(16, 13);
-            this.labelId.TabIndex = 0;
-            this.labelId.Text = "Id";
+            this.labelDescricao.AutoSize = true;
+            this.labelDescricao.Location = new System.Drawing.Point(3, 14);
+            this.labelDescricao.Name = "labelDescricao";
+            this.labelDescricao.Size = new System.Drawing.Size(55, 13);
+            this.labelDescricao.TabIndex = 0;
+            this.labelDescricao.Text = "Descrição";
             // 
-            // textBox1
+            // textBoxDescricao
             // 
-            this.textBox1.Location = new System.Drawing.Point(25, 11);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxDescricao.Location = new System.Drawing.Point(64, 11);
+            this.textBoxDescricao.Name = "textBoxDescricao";
+            this.textBoxDescricao.Size = new System.Drawing.Size(331, 20);
+            this.textBoxDescricao.TabIndex = 1;
             // 
             // buttonFiltrar
             // 
-            this.buttonFiltrar.Location = new System.Drawing.Point(131, 9);
+            this.buttonFiltrar.Location = new System.Drawing.Point(401, 9);
             this.buttonFiltrar.Name = "buttonFiltrar";
             this.buttonFiltrar.Size = new System.Drawing.Size(75, 23);
             this.buttonFiltrar.TabIndex = 2;
             this.buttonFiltrar.Text = "Filtrar";
             this.buttonFiltrar.UseVisualStyleBackColor = true;
+            this.buttonFiltrar.Click += new System.EventHandler(this.buttonFiltrar_Click);
+            // 
+            // buttonExcluir
+            // 
+            this.buttonExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExcluir.Location = new System.Drawing.Point(610, 9);
+            this.buttonExcluir.Name = "buttonExcluir";
+            this.buttonExcluir.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcluir.TabIndex = 3;
+            this.buttonExcluir.Text = "Excluir";
+            this.buttonExcluir.UseVisualStyleBackColor = true;
+            this.buttonExcluir.Click += new System.EventHandler(this.buttonExcluir_Click);
+            // 
+            // buttonCriar
+            // 
+            this.buttonCriar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCriar.Location = new System.Drawing.Point(691, 9);
+            this.buttonCriar.Name = "buttonCriar";
+            this.buttonCriar.Size = new System.Drawing.Size(75, 23);
+            this.buttonCriar.TabIndex = 4;
+            this.buttonCriar.Text = "Criar";
+            this.buttonCriar.UseVisualStyleBackColor = true;
+            this.buttonCriar.Click += new System.EventHandler(this.buttonCriar_Click);
             // 
             // VendasPedidosVendaUI
             // 
@@ -167,7 +194,9 @@
         private System.Windows.Forms.BindingSource pedidoBindingSource;
         private System.Windows.Forms.Panel panelFilters;
         private System.Windows.Forms.Button buttonFiltrar;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label labelId;
+        private System.Windows.Forms.TextBox textBoxDescricao;
+        private System.Windows.Forms.Label labelDescricao;
+        private System.Windows.Forms.Button buttonCriar;
+        private System.Windows.Forms.Button buttonExcluir;
     }
 }

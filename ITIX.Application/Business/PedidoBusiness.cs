@@ -24,5 +24,10 @@ namespace ITIX.Application.Business
         {
             throw new NotImplementedException();
         }
+
+        public List<Pedido> GetByDescricao(String descricao)
+        {
+            return this.Dao.All().Where(p => p.Comentario.Contains(descricao)).ToList();
+        }
     }
 }
