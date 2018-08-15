@@ -1,0 +1,13 @@
+
+ITIX.Application/obj/
+ITIX.Application/bin/
+ITIX.Core/obj/
+ITIX.Core/bin/
+ITIX.View/obj/
+ITIX.View/bin/
+ITIX.ViewForm/obj/
+ITIX.ViewForm/bin/
+ITIX.Test/obj/
+ITIX.Test/bin/
+ITIX.EntityFramework/obj/
+ITIX.EntityFramework/bin/
