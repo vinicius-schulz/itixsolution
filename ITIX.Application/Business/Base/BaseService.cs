@@ -18,6 +18,7 @@ namespace ITIX.Application.Business.Base
         {
             this.Context = context;
             this.Dao = (T)Activator.CreateInstance(typeof(T), new Object[] { this.Context });
+            LoadBusiness();
         }
 
         public void AddOrUpdate(IEnumerable<K> entidades)
@@ -57,6 +58,7 @@ namespace ITIX.Application.Business.Base
             return this.Dao.All().ToList();
         }
 
-        protected abstract void Validate(K entity);
+        public abstract void Validate(K entity);
+        protected abstract void LoadBusiness();
     }
 }

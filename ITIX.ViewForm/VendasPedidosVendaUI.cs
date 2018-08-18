@@ -29,7 +29,24 @@ namespace ITIX.ViewForm
 
         private void buttonExcluir_Click(object sender, EventArgs e)
         {
+            try
+            {
+                List<Pedido> pedidos = new List<Pedido>();
+                foreach (DataGridViewRow row in this.dataGridViewPedidos.SelectedRows)
+                {
+                    pedidos.Add(row.DataBoundItem as Pedido);
+                }
 
+                bns.Delete(pedidos);
+                foreach (Pedido item in pedidos)
+                {
+                    this.pedidoBindingSource.Remove(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void buttonCriar_Click(object sender, EventArgs e)

@@ -30,7 +30,7 @@ namespace ITIX.Application.Business
             return produto;
         }
 
-        protected override void Validate(Produto entity)
+        public override void Validate(Produto entity)
         {
             if (entity.NomeProduto.Trim() == "")
             {
@@ -38,9 +38,31 @@ namespace ITIX.Application.Business
             }
         }
 
-        public List<Produto> GetByNomeProduto(String nomeProduto)
+        public List<Produto> GetListOfProdutoByNomeProduto(String nomeProduto)
         {
             return this.Dao.All().Where(p => p.NomeProduto.Contains(nomeProduto)).ToList();
+        }
+
+        public Produto GetProdutoByNomeProduto(String nomeProduto)
+        {
+            return this.Dao.All().Where(p => p.NomeProduto == nomeProduto).ToList().FirstOrDefault();
+        }
+
+        public List<String> GetAllNomesProdutos()
+        {
+            List<String> str = new List<string>();
+            List<Produto> produtos = this.Dao.All().ToList();
+
+            foreach(Produto item in produtos)
+            {
+                str.Add(item.NomeProduto);
+            }
+            return str;
+
+        }
+
+        protected override void LoadBusiness()
+        {
         }
     }
 }

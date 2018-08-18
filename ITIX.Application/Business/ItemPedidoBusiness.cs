@@ -19,9 +19,14 @@ namespace ITIX.Application.Business
 
         }
 
-        protected override void Validate(ItemPedido entity)
+        public override void Validate(ItemPedido entity)
         {
-            throw new System.NotImplementedException();
+            
+        }
+
+        protected override void LoadBusiness()
+        {
+            
         }
     }
 }

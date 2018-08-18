@@ -12,6 +12,8 @@ namespace ITIX.Application.Business
     public class PedidoBusiness : BaseBusiness<PedidoRepository<Pedido>, Pedido>
     {
 
+        private ItemPedidoBusiness bnsItemPedido;
+
         public PedidoBusiness(ITIXDbContext context) : base(context)
         {
         }
@@ -20,14 +22,35 @@ namespace ITIX.Application.Business
         {
         }
 
-        protected override void Validate(Pedido entity)
+        public override void Validate(Pedido entity)
         {
-            throw new NotImplementedException();
+            if (entity.Comentario.Trim() == "")
+            {
+                throw new Exception("Comentário em Branco.");
+            }
+
         }
 
         public List<Pedido> GetByDescricao(String descricao)
         {
             return this.Dao.All().Where(p => p.Comentario.Contains(descricao)).ToList();
+        }
+
+        public Pedido Save(int id, string descricao, double total, double desconto, double subtotal, List<ItemPedido> itensPedido)
+        {
+            Pedido pedido = new Pedido { Id = id, Comentario = descricao, Desconto = desconto, ItensPedido = itensPedido, Subtotal = subtotal, TotalGeral = total };
+
+            Validate(pedido);
+
+            this.Dao.AddOrUpdate(pedido);
+            this.Dao.Save();
+
+            return pedido;
+        }
+
+        protected override void LoadBusiness()
+        {
+            bnsItemPedido = new ItemPedidoBusiness(this.Context);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace ITIX.ViewForm
         {
             try
             {
-                var list = bns.GetByNomeProduto(textBoxNomeProduto.Text);
+                var list = bns.GetListOfProdutoByNomeProduto(textBoxNomeProduto.Text);
                 loadGrid(list);
             }
             catch(Exception ex)

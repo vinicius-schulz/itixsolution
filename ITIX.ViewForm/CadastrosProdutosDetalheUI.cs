@@ -7,17 +7,23 @@ namespace ITIX.ViewForm
 {
     public partial class CadastrosProdutosDetalheUI : Form
     {
+        private ProdutoBusiness bns;
+
         public CadastrosProdutosDetalheUI()
         {
             InitializeComponent();
+        }
+
+        private void loadBusiness()
+        {
+            this.bns = new ProdutoBusiness();
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
             try
             {
-                ProdutoBusiness bns = new ProdutoBusiness();
-                Produto produto = bns.Save(Convert.ToInt32(headerComponent.getTextBoxId().Text), textBoxNomeProduto.Text, textBoxDescricao.Text, Convert.ToDouble(textBoxPreco.Text), Convert.ToDouble(textBoxPesoBruto.Text), Convert.ToDouble(textBoxPesoLiquido.Text));
+                Produto produto = bns.Save(Convert.ToInt32(headerComponent.getTextBoxId().Text), textBoxNomeProduto.Text, textBoxDescricao.Text, textBoxPreco.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPreco.Text), textBoxPesoBruto.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPesoBruto.Text), textBoxPesoLiquido.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPesoLiquido.Text));
                 headerComponent.getTextBoxId().Text = produto.Id.ToString();
                 MessageBox.Show(this, "Registro salvo com sucesso!");
             }
@@ -52,6 +58,12 @@ namespace ITIX.ViewForm
         }
 
         private void CadastrosProdutosDetalheUI_Load(object sender, EventArgs e)
+        {
+            loadBusiness();
+            loadEvents();
+        }
+
+        private void loadEvents()
         {
             this.footerComponent.getbuttonSalvar().Click += new System.EventHandler(this.buttonSalvar_Click);
             this.footerComponent.getButtonEditar().Click += new System.EventHandler(this.buttonEditar_Click);
