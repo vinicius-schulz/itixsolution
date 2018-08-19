@@ -40,12 +40,14 @@ namespace ITIX.Application.Business
 
         public List<Produto> GetListOfProdutoByNomeProduto(String nomeProduto)
         {
-            return this.Dao.All().Where(p => p.NomeProduto.Contains(nomeProduto)).ToList();
+            return this.Dao.All().Where(p => p.NomeProduto.Contains(nomeProduto)).ToList(); ;
         }
 
         public Produto GetProdutoByNomeProduto(String nomeProduto)
         {
-            return this.Dao.All().Where(p => p.NomeProduto == nomeProduto).ToList().FirstOrDefault();
+            Produto produto = this.Dao.All().Where(p => p.NomeProduto == nomeProduto).ToList().FirstOrDefault();
+            this.Dao.Detach(produto);
+            return produto;
         }
 
         public List<String> GetAllNomesProdutos()

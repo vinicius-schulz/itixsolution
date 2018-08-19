@@ -2,6 +2,7 @@
 using ITIX.Core.Model.Base;
 using ITIX.EntityFramework.EntityFramework;
 using ITIX.EntityFramework.Repository.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 

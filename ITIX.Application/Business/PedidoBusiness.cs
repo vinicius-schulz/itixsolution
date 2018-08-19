@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
 using ITIX.EntityFramework.EntityFramework;
+using System.Data.Entity;
 
 namespace ITIX.Application.Business
 {
@@ -41,6 +42,12 @@ namespace ITIX.Application.Business
             Pedido pedido = new Pedido { Id = id, Comentario = descricao, Desconto = desconto, ItensPedido = itensPedido, Subtotal = subtotal, TotalGeral = total };
 
             Validate(pedido);
+
+            foreach(ItemPedido item in pedido.ItensPedido)
+            {
+                this.Context.Set(typeof(Produto)).Attach(item.Produto);
+                //this.Context.Entry(item.Produto).State = EntityState.Modified;
+            }
 
             this.Dao.AddOrUpdate(pedido);
             this.Dao.Save();

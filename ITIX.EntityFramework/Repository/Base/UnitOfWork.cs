@@ -47,5 +47,36 @@ namespace ITIX.EntityFramework.Repository.Base
         {
             return _defaultContext.Database;
         }
+
+        public void Detach<T>(List<T> entities) where T : EntityBase
+        {
+            foreach (T item in entities)
+            {
+                _defaultContext.Entry(item).State = EntityState.Detached;
+            }
+        }
+
+        public void Detach<T>(T entity) where T : EntityBase
+        {
+            if (entity != null)
+            {
+                _defaultContext.Entry(entity).State = EntityState.Detached;
+            }
+        }
+
+        public void Attach<T>(T entity) where T : EntityBase
+        {
+            if (entity != null) {
+                _defaultContext.Set(typeof(T)).Attach(entity);
+            }
+        }
+
+        public void Attach<T>(List<T> entities) where T : EntityBase
+        {
+            foreach (T item in entities)
+            {
+                _defaultContext.Set(typeof(T)).Attach(item);
+            }
+        }
     }
 }

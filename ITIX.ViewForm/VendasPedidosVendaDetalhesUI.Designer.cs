@@ -113,10 +113,11 @@
             this.dataGridViewItensPedido.Name = "dataGridViewItensPedido";
             this.dataGridViewItensPedido.Size = new System.Drawing.Size(579, 254);
             this.dataGridViewItensPedido.TabIndex = 8;
+            this.dataGridViewItensPedido.CellValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItensPedido_CellValidated);
             this.dataGridViewItensPedido.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridViewItensPedido_CellValidating);
             this.dataGridViewItensPedido.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridViewItensPedido_EditingControlShowing);
+            this.dataGridViewItensPedido.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItensPedido_RowValidated);
             this.dataGridViewItensPedido.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewItensPedido_RowValidating);
-            this.dataGridViewItensPedido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridViewItensPedido_KeyPress);
             // 
             // itemPedidoBindingSource
             // 
@@ -136,6 +137,7 @@
             // 
             this.textBoxDesconto.Location = new System.Drawing.Point(73, 35);
             this.textBoxDesconto.Name = "textBoxDesconto";
+            this.textBoxDesconto.ReadOnly = true;
             this.textBoxDesconto.Size = new System.Drawing.Size(100, 20);
             this.textBoxDesconto.TabIndex = 6;
             // 
@@ -143,6 +145,7 @@
             // 
             this.textBoxSubTotal.Location = new System.Drawing.Point(73, 9);
             this.textBoxSubTotal.Name = "textBoxSubTotal";
+            this.textBoxSubTotal.ReadOnly = true;
             this.textBoxSubTotal.Size = new System.Drawing.Size(100, 20);
             this.textBoxSubTotal.TabIndex = 5;
             // 
@@ -150,6 +153,7 @@
             // 
             this.textBoxTotal.Location = new System.Drawing.Point(73, 61);
             this.textBoxTotal.Name = "textBoxTotal";
+            this.textBoxTotal.ReadOnly = true;
             this.textBoxTotal.Size = new System.Drawing.Size(100, 20);
             this.textBoxTotal.TabIndex = 4;
             // 
@@ -259,6 +263,7 @@
             this.subTotalDataGridViewTextBoxColumn.DataPropertyName = "SubTotal";
             this.subTotalDataGridViewTextBoxColumn.HeaderText = "SubTotal";
             this.subTotalDataGridViewTextBoxColumn.Name = "subTotalDataGridViewTextBoxColumn";
+            this.subTotalDataGridViewTextBoxColumn.ReadOnly = true;
             this.subTotalDataGridViewTextBoxColumn.Width = 60;
             // 
             // valorTotalDataGridViewTextBoxColumn
@@ -266,6 +271,7 @@
             this.valorTotalDataGridViewTextBoxColumn.DataPropertyName = "ValorTotal";
             this.valorTotalDataGridViewTextBoxColumn.HeaderText = "ValorTotal";
             this.valorTotalDataGridViewTextBoxColumn.Name = "valorTotalDataGridViewTextBoxColumn";
+            this.valorTotalDataGridViewTextBoxColumn.ReadOnly = true;
             this.valorTotalDataGridViewTextBoxColumn.Width = 70;
             // 
             // idPedidoDataGridViewTextBoxColumn

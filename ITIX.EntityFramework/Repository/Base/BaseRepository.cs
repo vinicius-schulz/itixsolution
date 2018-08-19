@@ -76,5 +76,25 @@ namespace ITIX.EntityFramework.Repository.Base
         {
             
         }
+
+        public void Detach(List<T> result)
+        {
+            unitOfWork.Detach(result);
+        }
+
+        public void Detach(T entity)
+        {
+            unitOfWork.Detach(entity);
+        }
+
+        public void Attach(T entity)
+        {
+            unitOfWork.Attach(entity);
+        }
+
+        public void Attach(List<T> entities)
+        {
+            unitOfWork.Attach(entities);
+        }
     }
 }

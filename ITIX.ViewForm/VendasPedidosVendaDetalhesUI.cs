@@ -45,6 +45,7 @@ namespace ITIX.ViewForm
                     itensPedido);
                 headerComponent.getTextBoxId().Text = pedido.Id.ToString();
                 MessageBox.Show(this, "Registro salvo com sucesso!");
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -84,32 +85,27 @@ namespace ITIX.ViewForm
 
         private void dataGridViewItensPedido_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
         {
-            //e.Cancel = true;
-
-
-            var item = dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido;
-            //itemPedidoBns.
-
-
-            if (this.dataGridViewItensPedido.Rows == null)
+            if ((dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido) != null)
             {
-                e.Cancel = true;
+                if ((dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).Produto == null)
+                {
+                    e.Cancel = true;
+                }
             }
         }
 
         private void dataGridViewItensPedido_KeyPress(object sender, KeyPressEventArgs e)
         {
-            int ascii = Convert.ToInt16(e.KeyChar);
-            if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 18)
+            if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 3 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 4 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 5) //Desired Column
             {
-                if ((ascii >= 48 && ascii <= 57) || (ascii == 8))
+                DataGridViewTextBoxEditingControl s = sender as DataGridViewTextBoxEditingControl;
+                if (s != null && (e.KeyChar == '.' || e.KeyChar == ','))
                 {
-                    e.Handled = false;
+                    e.KeyChar = System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator[0];
+                    e.Handled = s.Text.Contains(e.KeyChar);
                 }
                 else
-                {
-                    e.Handled = true;
-                }
+                    e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
             }
         }
 
@@ -121,7 +117,6 @@ namespace ITIX.ViewForm
                 List<String> nomes = produtoBns.GetAllNomesProdutos();
                 acBusIDSorce.AddRange(nomes.ToArray());
 
-                //ComboBox txtBusID = e.Control as ComboBox;
                 TextBox txtBusID = e.Control as TextBox;
                 if (txtBusID != null)
                 {
@@ -130,6 +125,13 @@ namespace ITIX.ViewForm
                     txtBusID.AutoCompleteSource = AutoCompleteSource.CustomSource;
 
                 }
+            }
+
+
+            if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 3 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 4 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 5) //Desired Column
+            {
+                e.Control.KeyPress -= dataGridViewItensPedido_KeyPress;
+                e.Control.KeyPress += dataGridViewItensPedido_KeyPress;
             }
         }
 
@@ -142,13 +144,62 @@ namespace ITIX.ViewForm
                 if (produto != null)
                 {
                     (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).Produto = produto;
-                    e.Cancel = false;
                 }
                 else
                 {
-                    (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).Produto = null;
-                    e.Cancel = true;
+                    if ((dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido) != null)
+                    {
+                        (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).Produto = null;
+                    }
                 }
+            }
+        }
+
+
+        private void dataGridViewItensPedido_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 2)
+            {
+                if ((dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido) != null)
+                {
+                    if ((dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).Produto == null)
+                    {
+                        dataGridViewItensPedido.CurrentCell.Value = "";
+                    }
+                }
+                else
+                {
+                    dataGridViewItensPedido.CurrentCell.Value = "";
+                }
+            }
+
+            if ((dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido) != null)
+            {
+                if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 3 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 4 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 5)
+                {
+                    ItemPedido item = (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido);
+                    (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).ValorTotal = itemPedidoBns.CalculateValorTotal(item);
+                    (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).SubTotal = itemPedidoBns.CalculateSubTotal(item);
+                }
+            }
+        }
+
+        private void dataGridViewItensPedido_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            List<ItemPedido> itensPedido = new List<ItemPedido>();
+            foreach (DataGridViewRow row in this.dataGridViewItensPedido.Rows)
+            {
+                if (row.DataBoundItem as ItemPedido != null)
+                {
+                    itensPedido.Add(row.DataBoundItem as ItemPedido);
+                }
+            }
+
+            if (itensPedido.Count > 0)
+            {
+                this.textBoxSubTotal.Text = itemPedidoBns.CalculateSubTotalGeral(itensPedido).ToString();
+                this.textBoxTotal.Text = itemPedidoBns.CalculateValorTotalGeral(itensPedido).ToString();
+                this.textBoxDesconto.Text = itemPedidoBns.CalculateDescontoGeral(itensPedido).ToString();
             }
         }
     }
