@@ -7,8 +7,8 @@
     <ProjectGuid>{E22EAB0D-37D5-4A67-8D7B-38C53F7C2AAB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ITIX.Core</RootNamespace>
-    <AssemblyName>ITIX.Core</AssemblyName>
+    <RootNamespace>ITIX.Domain</RootNamespace>
+    <AssemblyName>ITIX.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,6 +46,10 @@
     <Compile Include="Model\Pedido.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IBaseRepository.cs" />
+    <Compile Include="Repositories\IItemPedidoRepository.cs" />
+    <Compile Include="Repositories\IPedidoRepository.cs" />
+    <Compile Include="Repositories\IProdutoRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

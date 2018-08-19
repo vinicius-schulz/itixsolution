@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITIX.EntityFramework.Repository.Base
+namespace ITIX.Domain.Repositories
 {
-    public interface IRepository<T> where T : EntityBase
+    public interface IBaseRepository<T> where T : EntityBase
     {
         void AddOrUpdate(IEnumerable<T> entidades);
         void AddOrUpdate(T entidade);

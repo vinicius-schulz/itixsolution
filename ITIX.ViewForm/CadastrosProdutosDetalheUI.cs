@@ -7,23 +7,19 @@ namespace ITIX.ViewForm
 {
     public partial class CadastrosProdutosDetalheUI : Form
     {
-        private ProdutoBusiness bns;
+        private readonly ProdutoBusiness produtoBusiness;
 
-        public CadastrosProdutosDetalheUI()
+        public CadastrosProdutosDetalheUI(ProdutoBusiness produtoBusiness)
         {
             InitializeComponent();
-        }
-
-        private void loadBusiness()
-        {
-            this.bns = new ProdutoBusiness();
+            this.produtoBusiness = produtoBusiness;
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
             try
             {
-                Produto produto = bns.Save(Convert.ToInt32(headerComponent.getTextBoxId().Text), textBoxNomeProduto.Text, textBoxDescricao.Text, textBoxPreco.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPreco.Text), textBoxPesoBruto.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPesoBruto.Text), textBoxPesoLiquido.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPesoLiquido.Text));
+                Produto produto = produtoBusiness.Save(Convert.ToInt32(headerComponent.getTextBoxId().Text), textBoxNomeProduto.Text, textBoxDescricao.Text, textBoxPreco.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPreco.Text), textBoxPesoBruto.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPesoBruto.Text), textBoxPesoLiquido.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPesoLiquido.Text));
                 headerComponent.getTextBoxId().Text = produto.Id.ToString();
                 MessageBox.Show(this, "Registro salvo com sucesso!");
                 this.Close();
@@ -60,7 +56,6 @@ namespace ITIX.ViewForm
 
         private void CadastrosProdutosDetalheUI_Load(object sender, EventArgs e)
         {
-            loadBusiness();
             loadEvents();
         }
 

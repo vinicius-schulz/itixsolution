@@ -1,5 +1,6 @@
 ﻿using ITIX.Application.Business;
 using ITIX.Core.Model;
+using ITIX.ViewForm.Ninject;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,18 +15,19 @@ namespace ITIX.ViewForm
 {
     public partial class CadastrosProdutosUI : Form
     {
-        private ProdutoBusiness bns;
+        private readonly ProdutoBusiness produtoBusiness;
 
-        public CadastrosProdutosUI()
+        public CadastrosProdutosUI(ProdutoBusiness produtoBusiness)
         {
             InitializeComponent();
+            this.produtoBusiness = produtoBusiness;
         }
 
         private void buttonFiltrar_Click(object sender, EventArgs e)
         {
             try
             {
-                var list = bns.GetListOfProdutoByNomeProduto(textBoxNomeProduto.Text);
+                var list = produtoBusiness.GetListOfProdutoByNomeProduto(textBoxNomeProduto.Text);
                 loadGrid(list);
             }
             catch(Exception ex)
@@ -44,7 +46,7 @@ namespace ITIX.ViewForm
                     produtos.Add(row.DataBoundItem as Produto);
                 }
 
-                bns.Delete(produtos);
+                produtoBusiness.Delete(produtos);
                 foreach (Produto item in produtos)
                 {
                     this.produtoBindingSource.Remove(item);
@@ -58,26 +60,20 @@ namespace ITIX.ViewForm
 
         private void buttonCriarProduto_Click(object sender, EventArgs e)
         {
-            CadastrosProdutosDetalheUI form = new CadastrosProdutosDetalheUI();
+            CadastrosProdutosDetalheUI form = CompositionRoot.Resolve<CadastrosProdutosDetalheUI>();
             form.ShowDialog();
         }
 
         private void CadastrosProdutosUI_Load(object sender, EventArgs e)
         {
-            loadBusiness();
             loadProdutosToGrid();
-        }
-
-        private void loadBusiness()
-        {
-            this.bns = new ProdutoBusiness();
         }
 
         private void loadProdutosToGrid()
         {
             try
             {
-                var list = bns.GetAll();
+                var list = produtoBusiness.GetAll();
                 loadGrid(list);
             }
             catch (Exception ex)

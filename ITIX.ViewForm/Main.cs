@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ITIX.Application.Business;
+using ITIX.Domain.Repositories;
+using ITIX.ViewForm.Ninject;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +15,11 @@ namespace ITIX.ViewForm
 {
     public partial class Main : Form
     {
-        public Main()
+        private readonly PedidoBusiness pedidoBusiness;
+
+        public Main(PedidoBusiness pedidoBusiness)
         {
+            this.pedidoBusiness = pedidoBusiness;
             InitializeComponent();
 
             WindowState = FormWindowState.Maximized;
@@ -21,7 +27,7 @@ namespace ITIX.ViewForm
 
         private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CadastrosProdutosUI form = new CadastrosProdutosUI();
+            CadastrosProdutosUI form = CompositionRoot.Resolve<CadastrosProdutosUI>();
             if (!CheckForDuplicate(form))
             {
                 form.MdiParent = this;
@@ -46,7 +52,7 @@ namespace ITIX.ViewForm
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VendasPedidosVendaUI form = new VendasPedidosVendaUI();
+            VendasPedidosVendaUI form = CompositionRoot.Resolve<VendasPedidosVendaUI>();
             if (!CheckForDuplicate(form))
             {
                 form.MdiParent = this;

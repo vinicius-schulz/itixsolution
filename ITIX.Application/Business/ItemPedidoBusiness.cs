@@ -8,28 +8,8 @@ using System.Linq;
 
 namespace ITIX.Application.Business
 {
-    public class ItemPedidoBusiness : BaseBusiness<ItemPedidoRepository<ItemPedido>, ItemPedido>
+    public class ItemPedidoBusiness 
     {
-
-        public ItemPedidoBusiness(ITIXDbContext context) : base(context)
-        {
-        }
-
-        public ItemPedidoBusiness() : base(new ITIXDbContext())
-        {
-
-        }
-
-        public override void Validate(ItemPedido entity)
-        {
-            
-        }
-
-        protected override void LoadBusiness()
-        {
-            
-        }
-
         public double CalculateValorTotal(ItemPedido itemPedido)
         {
             return itemPedido.PrecoUnitario * itemPedido.Quantidade - itemPedido.Desconto;

@@ -55,13 +55,13 @@
     <Folder Include="Utilities\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ITIX.Core\ITIX.Core.csproj">
+    <ProjectReference Include="..\ITIX.Core\ITIX.Domain.csproj">
       <Project>{e22eab0d-37d5-4a67-8d7b-38c53f7c2aab}</Project>
-      <Name>ITIX.Core</Name>
+      <Name>ITIX.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ITIX.EntityFramework\ITIX.EntityFramework.csproj">
+    <ProjectReference Include="..\ITIX.EntityFramework\ITIX.Persistence.csproj">
       <Project>{89bd71c5-86d7-471f-8745-6080407d7026}</Project>
-      <Name>ITIX.EntityFramework</Name>
+      <Name>ITIX.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

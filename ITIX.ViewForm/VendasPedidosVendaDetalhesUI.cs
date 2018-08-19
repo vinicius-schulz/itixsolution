@@ -15,13 +15,16 @@ namespace ITIX.ViewForm
     public partial class VendasPedidosVendaDetalhesUI : Form
     {
 
-        private PedidoBusiness pedidoBns;
-        private ItemPedidoBusiness itemPedidoBns;
-        private ProdutoBusiness produtoBns;
+        private readonly PedidoBusiness pedidoBusiness;
+        private readonly ItemPedidoBusiness itemPedidoBusiness;
+        private readonly ProdutoBusiness produtoBusiness;
 
-        public VendasPedidosVendaDetalhesUI()
+        public VendasPedidosVendaDetalhesUI(PedidoBusiness pedidoBusiness, ItemPedidoBusiness itemPedidoBusiness, ProdutoBusiness produtoBusiness)
         {
             InitializeComponent();
+            this.pedidoBusiness = pedidoBusiness;
+            this.itemPedidoBusiness = itemPedidoBusiness;
+            this.produtoBusiness = produtoBusiness;
         }
 
         private void buttonSalvar_Click(object sender, EventArgs e)
@@ -37,7 +40,7 @@ namespace ITIX.ViewForm
                     }
                 }
 
-                Pedido pedido = pedidoBns.Save(Convert.ToInt32(headerComponent.getTextBoxId().Text),
+                Pedido pedido = pedidoBusiness.Save(Convert.ToInt32(headerComponent.getTextBoxId().Text),
                     richTextBoxDescricao.Text,
                     textBoxTotal.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxTotal.Text),
                     textBoxDesconto.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxDesconto.Text),
@@ -58,22 +61,9 @@ namespace ITIX.ViewForm
             this.Close();
         }
 
-        private void buttonEditar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void VendasPedidosVendaDetalhesUI_Load(object sender, EventArgs e)
         {
-            loadBusiness();
             loadEvents();
-        }
-
-        private void loadBusiness()
-        {
-            this.pedidoBns = new PedidoBusiness();
-            this.itemPedidoBns = new ItemPedidoBusiness();
-            this.produtoBns = new ProdutoBusiness();
         }
 
         private void loadEvents()
@@ -117,7 +107,7 @@ namespace ITIX.ViewForm
             if (sCellName == "Nome do Produto")
             {
                 AutoCompleteStringCollection acBusIDSorce = new AutoCompleteStringCollection();
-                List<String> nomes = produtoBns.GetAllNomesProdutos();
+                List<String> nomes = produtoBusiness.GetAllNomesProdutos();
                 acBusIDSorce.AddRange(nomes.ToArray());
 
                 TextBox txtBusID = e.Control as TextBox;
@@ -144,7 +134,7 @@ namespace ITIX.ViewForm
 
             if (sCellName == "Nome do Produto")
             {
-                Produto produto = produtoBns.GetProdutoByNomeProduto(e.FormattedValue.ToString());
+                Produto produto = produtoBusiness.GetProdutoByNomeProduto(e.FormattedValue.ToString());
 
                 if (produto != null)
                 {
@@ -186,8 +176,8 @@ namespace ITIX.ViewForm
                 if (sCellName == "PrecoUnitario" || sCellName == "Quantidade" || sCellName == "Desconto")
                 {
                     ItemPedido item = (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido);
-                    (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).ValorTotal = itemPedidoBns.CalculateValorTotal(item);
-                    (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).SubTotal = itemPedidoBns.CalculateSubTotal(item);
+                    (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).ValorTotal = itemPedidoBusiness.CalculateValorTotal(item);
+                    (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).SubTotal = itemPedidoBusiness.CalculateSubTotal(item);
                 }
             }
         }
@@ -205,9 +195,9 @@ namespace ITIX.ViewForm
 
             if (itensPedido.Count > 0)
             {
-                this.textBoxSubTotal.Text = itemPedidoBns.CalculateSubTotalGeral(itensPedido).ToString();
-                this.textBoxTotal.Text = itemPedidoBns.CalculateValorTotalGeral(itensPedido).ToString();
-                this.textBoxDesconto.Text = itemPedidoBns.CalculateDescontoGeral(itensPedido).ToString();
+                this.textBoxSubTotal.Text = itemPedidoBusiness.CalculateSubTotalGeral(itensPedido).ToString();
+                this.textBoxTotal.Text = itemPedidoBusiness.CalculateValorTotalGeral(itensPedido).ToString();
+                this.textBoxDesconto.Text = itemPedidoBusiness.CalculateDescontoGeral(itensPedido).ToString();
             }
         }
     }

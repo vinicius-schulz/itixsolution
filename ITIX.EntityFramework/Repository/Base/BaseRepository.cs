@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Data.Entity.Migrations;
 using System.Data.Entity;
 using ITIX.EntityFramework.EntityFramework;
+using ITIX.Domain.Repositories;
 
 namespace ITIX.EntityFramework.Repository.Base
 {
-    public abstract class BaseRepository<T> : IDisposable, IRepository<T> where T : EntityBase
+    public abstract class BaseRepository<T> : IDisposable, IBaseRepository<T> where T : EntityBase
     {
 
         private readonly IUnitOfWork unitOfWork; 

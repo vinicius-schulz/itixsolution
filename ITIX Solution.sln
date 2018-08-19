@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITIX.Core", "ITIX.Core\ITIX.Core.csproj", "{E22EAB0D-37D5-4A67-8D7B-38C53F7C2AAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITIX.Domain", "ITIX.Core\ITIX.Domain.csproj", "{E22EAB0D-37D5-4A67-8D7B-38C53F7C2AAB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITIX.Application", "ITIX.Application\ITIX.Application.csproj", "{D01472A3-290B-439E-9718-E1EC99421067}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITIX.EntityFramework", "ITIX.EntityFramework\ITIX.EntityFramework.csproj", "{89BD71C5-86D7-471F-8745-6080407D7026}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITIX.Persistence", "ITIX.EntityFramework\ITIX.Persistence.csproj", "{89BD71C5-86D7-471F-8745-6080407D7026}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITIX.Test", "ITIX.Test\ITIX.Test.csproj", "{ECA923B0-0357-4F88-8A86-7A777A34D7CA}"
 EndProject

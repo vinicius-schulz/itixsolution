@@ -7,8 +7,8 @@
     <ProjectGuid>{89BD71C5-86D7-471F-8745-6080407D7026}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ITIX.EntityFramework</RootNamespace>
-    <AssemblyName>ITIX.EntityFramework</AssemblyName>
+    <RootNamespace>ITIX.Persistence</RootNamespace>
+    <AssemblyName>ITIX.Persistence</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -69,10 +69,8 @@
     <Compile Include="Migrations\201808150113025_inicial.Designer.cs">
       <DependentUpon>201808150113025_inicial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Repository\Base\DynamicOrderBy.cs" />
     <Compile Include="Repository\Base\BaseRepository.cs" />
     <Compile Include="EntityFramework\ITIXDbContext.cs" />
-    <Compile Include="Repository\Base\IRepository.cs" />
     <Compile Include="Repository\Base\IUnitOfWork.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\ItemPedidoRepository.cs" />
@@ -86,9 +84,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ITIX.Core\ITIX.Core.csproj">
+    <ProjectReference Include="..\ITIX.Core\ITIX.Domain.csproj">
       <Project>{e22eab0d-37d5-4a67-8d7b-38c53f7c2aab}</Project>
-      <Name>ITIX.Core</Name>
+      <Name>ITIX.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

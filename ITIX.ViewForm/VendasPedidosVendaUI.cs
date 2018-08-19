@@ -1,5 +1,6 @@
 ﻿using ITIX.Application.Business;
 using ITIX.Core.Model;
+using ITIX.ViewForm.Ninject;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,16 +15,16 @@ namespace ITIX.ViewForm
 {
     public partial class VendasPedidosVendaUI : Form
     {
-        private PedidoBusiness bns;
+        private readonly PedidoBusiness pedidoBusiness;
 
-        public VendasPedidosVendaUI()
+        public VendasPedidosVendaUI(PedidoBusiness pedidoBusiness)
         {
             InitializeComponent();
+            this.pedidoBusiness = pedidoBusiness;
         }
 
         private void VendasPedidosVendaUI_Load(object sender, EventArgs e)
         {
-            loadBusiness();
             loadPedidosToGrid();
         }
 
@@ -37,7 +38,7 @@ namespace ITIX.ViewForm
                     pedidos.Add(row.DataBoundItem as Pedido);
                 }
 
-                bns.Delete(pedidos);
+                pedidoBusiness.Delete(pedidos);
                 foreach (Pedido item in pedidos)
                 {
                     this.pedidoBindingSource.Remove(item);
@@ -51,7 +52,7 @@ namespace ITIX.ViewForm
 
         private void buttonCriar_Click(object sender, EventArgs e)
         {
-            VendasPedidosVendaDetalhesUI form = new VendasPedidosVendaDetalhesUI();
+            VendasPedidosVendaDetalhesUI form = CompositionRoot.Resolve<VendasPedidosVendaDetalhesUI>();
             form.ShowDialog();
         }
 
@@ -59,7 +60,7 @@ namespace ITIX.ViewForm
         {
             try
             {
-                var list = bns.GetByDescricao(textBoxDescricao.Text);
+                var list = pedidoBusiness.GetByDescricao(textBoxDescricao.Text);
                 loadGrid(list);
             }
             catch (Exception ex)
@@ -68,16 +69,11 @@ namespace ITIX.ViewForm
             }
         }
 
-        private void loadBusiness()
-        {
-            this.bns = new PedidoBusiness();
-        }
-
         private void loadPedidosToGrid()
         {
             try
             {
-                var list = bns.GetAll();
+                List<Pedido> list = pedidoBusiness.GetAll();
                 loadGrid(list);
             }
             catch (Exception ex)

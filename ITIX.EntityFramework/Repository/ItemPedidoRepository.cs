@@ -1,4 +1,5 @@
 ﻿using ITIX.Core.Model;
+using ITIX.Domain.Repositories;
 using ITIX.EntityFramework.EntityFramework;
 using ITIX.EntityFramework.Repository.Base;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ITIX.EntityFramework.Repository
 {
-    public class ItemPedidoRepository<T> : BaseRepository<T> where T : ItemPedido
+    public class ItemPedidoRepository : BaseRepository<ItemPedido>, IItemPedidoRepository
     {
         public ItemPedidoRepository(ITIXDbContext context) : base(context)
         {

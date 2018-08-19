@@ -7,23 +7,25 @@ using System.Linq;
 using System.Globalization;
 using ITIX.EntityFramework.EntityFramework;
 using System.Data.Entity;
+using ITIX.Domain.Repositories;
 
 namespace ITIX.Application.Business
 {
-    public class PedidoBusiness : BaseBusiness<PedidoRepository<Pedido>, Pedido>
+    public class PedidoBusiness
     {
 
         private ItemPedidoBusiness bnsItemPedido;
+        private readonly IPedidoRepository PedidoRepository;
+        private readonly IProdutoRepository ProdutoRepository;
 
-        public PedidoBusiness(ITIXDbContext context) : base(context)
+
+        public PedidoBusiness(IPedidoRepository pedidoRepository, IProdutoRepository produtoRepository)
         {
+            this.PedidoRepository = pedidoRepository;
+            this.ProdutoRepository = produtoRepository;
         }
 
-        public PedidoBusiness() : base(new ITIXDbContext())
-        {
-        }
-
-        public override void Validate(Pedido entity)
+        public void Validate(Pedido entity)
         {
             if (entity.Comentario.Trim() == "")
             {
@@ -34,7 +36,13 @@ namespace ITIX.Application.Business
 
         public List<Pedido> GetByDescricao(String descricao)
         {
-            return this.Dao.All().Where(p => p.Comentario.Contains(descricao)).ToList();
+            return this.PedidoRepository.All().Where(p => p.Comentario.Contains(descricao)).ToList();
+        }
+
+        public void Delete(List<Pedido> pedidos)
+        {
+            this.PedidoRepository.Delete(pedidos);
+            this.PedidoRepository.Save();
         }
 
         public Pedido Save(int id, string descricao, double total, double desconto, double subtotal, List<ItemPedido> itensPedido)
@@ -43,21 +51,20 @@ namespace ITIX.Application.Business
 
             Validate(pedido);
 
-            foreach(ItemPedido item in pedido.ItensPedido)
+            foreach (ItemPedido item in pedido.ItensPedido)
             {
-                this.Context.Set(typeof(Produto)).Attach(item.Produto);
-                //this.Context.Entry(item.Produto).State = EntityState.Modified;
+                item.Produto = this.ProdutoRepository.All().FirstOrDefault(p => p.NomeProduto == item.Produto.NomeProduto);
             }
 
-            this.Dao.AddOrUpdate(pedido);
-            this.Dao.Save();
+            this.PedidoRepository.AddOrUpdate(pedido);
+            this.PedidoRepository.Save();
 
             return pedido;
         }
 
-        protected override void LoadBusiness()
+        public List<Pedido> GetAll()
         {
-            bnsItemPedido = new ItemPedidoBusiness(this.Context);
+            return this.PedidoRepository.All().ToList();
         }
     }
 }
