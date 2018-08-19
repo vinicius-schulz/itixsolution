@@ -26,6 +26,7 @@ namespace ITIX.ViewForm
                 Produto produto = bns.Save(Convert.ToInt32(headerComponent.getTextBoxId().Text), textBoxNomeProduto.Text, textBoxDescricao.Text, textBoxPreco.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPreco.Text), textBoxPesoBruto.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPesoBruto.Text), textBoxPesoLiquido.Text.Trim() == "" ? 0 : Convert.ToDouble(textBoxPesoLiquido.Text));
                 headerComponent.getTextBoxId().Text = produto.Id.ToString();
                 MessageBox.Show(this, "Registro salvo com sucesso!");
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -66,7 +67,6 @@ namespace ITIX.ViewForm
         private void loadEvents()
         {
             this.footerComponent.getbuttonSalvar().Click += new System.EventHandler(this.buttonSalvar_Click);
-            this.footerComponent.getButtonEditar().Click += new System.EventHandler(this.buttonEditar_Click);
             this.footerComponent.getButtonSair().Click += new System.EventHandler(this.buttonSair_Click);
         }
     }

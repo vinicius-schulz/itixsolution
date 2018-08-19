@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.buttonSalvar = new System.Windows.Forms.Button();
-            this.buttonEditar = new System.Windows.Forms.Button();
             this.buttonSair = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -42,18 +41,9 @@
             this.buttonSalvar.Text = "Salvar";
             this.buttonSalvar.UseVisualStyleBackColor = true;
             // 
-            // buttonEditar
-            // 
-            this.buttonEditar.Location = new System.Drawing.Point(95, 14);
-            this.buttonEditar.Name = "buttonEditar";
-            this.buttonEditar.Size = new System.Drawing.Size(75, 23);
-            this.buttonEditar.TabIndex = 1;
-            this.buttonEditar.Text = "Editar";
-            this.buttonEditar.UseVisualStyleBackColor = true;
-            // 
             // buttonSair
             // 
-            this.buttonSair.Location = new System.Drawing.Point(176, 14);
+            this.buttonSair.Location = new System.Drawing.Point(95, 14);
             this.buttonSair.Name = "buttonSair";
             this.buttonSair.Size = new System.Drawing.Size(75, 23);
             this.buttonSair.TabIndex = 2;
@@ -66,7 +56,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.buttonSair);
-            this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.buttonSalvar);
             this.Name = "FooterComponent";
             this.Size = new System.Drawing.Size(607, 48);
@@ -77,7 +66,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonSalvar;
-        private System.Windows.Forms.Button buttonEditar;
         private System.Windows.Forms.Button buttonSair;
     }
 }

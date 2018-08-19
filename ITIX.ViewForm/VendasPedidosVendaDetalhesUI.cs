@@ -79,7 +79,6 @@ namespace ITIX.ViewForm
         private void loadEvents()
         {
             this.footerComponent.getbuttonSalvar().Click += new System.EventHandler(this.buttonSalvar_Click);
-            this.footerComponent.getButtonEditar().Click += new System.EventHandler(this.buttonEditar_Click);
             this.footerComponent.getButtonSair().Click += new System.EventHandler(this.buttonSair_Click);
         }
 
@@ -96,7 +95,9 @@ namespace ITIX.ViewForm
 
         private void dataGridViewItensPedido_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 3 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 4 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 5) //Desired Column
+            String sCellName = dataGridViewItensPedido.Columns[dataGridViewItensPedido.CurrentCell.ColumnIndex].HeaderText;
+
+            if (sCellName == "PrecoUnitario" || sCellName == "Quantidade" || sCellName == "Desconto")
             {
                 DataGridViewTextBoxEditingControl s = sender as DataGridViewTextBoxEditingControl;
                 if (s != null && (e.KeyChar == '.' || e.KeyChar == ','))
@@ -111,7 +112,9 @@ namespace ITIX.ViewForm
 
         private void dataGridViewItensPedido_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 2)
+            String sCellName = dataGridViewItensPedido.Columns[dataGridViewItensPedido.CurrentCell.ColumnIndex].HeaderText;
+
+            if (sCellName == "Nome do Produto")
             {
                 AutoCompleteStringCollection acBusIDSorce = new AutoCompleteStringCollection();
                 List<String> nomes = produtoBns.GetAllNomesProdutos();
@@ -127,8 +130,8 @@ namespace ITIX.ViewForm
                 }
             }
 
-
-            if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 3 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 4 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 5) //Desired Column
+            if (sCellName == "PrecoUnitario" || sCellName == "Quantidade" || sCellName == "Desconto")
+            //if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 3 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 4 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 5) //Desired Column
             {
                 e.Control.KeyPress -= dataGridViewItensPedido_KeyPress;
                 e.Control.KeyPress += dataGridViewItensPedido_KeyPress;
@@ -137,7 +140,9 @@ namespace ITIX.ViewForm
 
         private void dataGridViewItensPedido_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 2)
+            String sCellName = dataGridViewItensPedido.Columns[dataGridViewItensPedido.CurrentCell.ColumnIndex].HeaderText;
+
+            if (sCellName == "Nome do Produto")
             {
                 Produto produto = produtoBns.GetProdutoByNomeProduto(e.FormattedValue.ToString());
 
@@ -158,7 +163,9 @@ namespace ITIX.ViewForm
 
         private void dataGridViewItensPedido_CellValidated(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 2)
+            String sCellName = dataGridViewItensPedido.Columns[dataGridViewItensPedido.CurrentCell.ColumnIndex].HeaderText;
+
+            if (sCellName == "Nome do Produto")
             {
                 if ((dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido) != null)
                 {
@@ -175,7 +182,8 @@ namespace ITIX.ViewForm
 
             if ((dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido) != null)
             {
-                if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 3 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 4 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 5)
+                //if (dataGridViewItensPedido.CurrentCell.ColumnIndex == 3 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 4 || dataGridViewItensPedido.CurrentCell.ColumnIndex == 5)
+                if (sCellName == "PrecoUnitario" || sCellName == "Quantidade" || sCellName == "Desconto")
                 {
                     ItemPedido item = (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido);
                     (dataGridViewItensPedido.Rows[e.RowIndex].DataBoundItem as ItemPedido).ValorTotal = itemPedidoBns.CalculateValorTotal(item);

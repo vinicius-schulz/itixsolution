@@ -22,11 +22,6 @@ namespace ITIX.ViewForm.Components
             return this.buttonSalvar;
         }
 
-        public Button getButtonEditar()
-        {
-            return this.buttonEditar;
-        }
-
         public Button getButtonSair()
         {
             return this.buttonSair;
