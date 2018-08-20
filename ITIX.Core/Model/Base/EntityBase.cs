@@ -1,4 +1,4 @@
-﻿namespace ITIX.Core.Model.Base
+﻿namespace ITIX.Domain.Model.Base
 {
     public abstract class EntityBase
     {

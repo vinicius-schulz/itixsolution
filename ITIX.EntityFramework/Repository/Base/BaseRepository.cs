@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using ITIX.Core.Model.Base;
+using ITIX.Domain.Model.Base;
 using System.Threading.Tasks;
 using System.Data.Entity.Migrations;
 using System.Data.Entity;
-using ITIX.EntityFramework.EntityFramework;
-using ITIX.Domain.Repositories;
+using ITIX.Persistence.EntityFramework;
+using ITIX.Persistence.Repositories;
 
-namespace ITIX.EntityFramework.Repository.Base
+namespace ITIX.Persistence.Repository.Base
 {
     public abstract class BaseRepository<T> : IDisposable, IBaseRepository<T> where T : EntityBase
     {
@@ -53,11 +53,6 @@ namespace ITIX.EntityFramework.Repository.Base
                 Delete(entidade);
         }
 
-        public void ExecuteSql(string sql)
-        {
-            unitOfWork.Database().ExecuteSqlCommand(sql);
-        }
-
         public T Get(int id)
         {
             return unitOfWork.Set<T>().Find(id);
@@ -68,34 +63,9 @@ namespace ITIX.EntityFramework.Repository.Base
             unitOfWork.Save();
         }
 
-        public Task SaveAsync()
-        {
-            return unitOfWork.SaveAsync();
-        }
-
         public void Dispose()
         {
             
-        }
-
-        public void Detach(List<T> result)
-        {
-            unitOfWork.Detach(result);
-        }
-
-        public void Detach(T entity)
-        {
-            unitOfWork.Detach(entity);
-        }
-
-        public void Attach(T entity)
-        {
-            unitOfWork.Attach(entity);
-        }
-
-        public void Attach(List<T> entities)
-        {
-            unitOfWork.Attach(entities);
         }
     }
 }

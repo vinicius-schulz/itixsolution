@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using ITIX.Application.Business;
-using ITIX.Core.Model;
-using ITIX.Domain.Repositories;
+using ITIX.Domain.Model;
+using ITIX.Persistence.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
@@ -35,7 +35,7 @@ namespace ITIX.Test
         }
 
         [TestMethod]
-        public void Test_Save_Produto_Bem_Sucedido()
+        public void Test_Save_Bem_Sucedido()
         {
             // arrange
             var produtoRepository = Substitute.For<IProdutoRepository>();
@@ -61,7 +61,7 @@ namespace ITIX.Test
         }
 
         [TestMethod]
-        public void Test_Save_Produto_Falha()
+        public void Test_Save_Falha()
         {
             // arrange
             var produtoRepository = Substitute.For<IProdutoRepository>();
@@ -78,7 +78,7 @@ namespace ITIX.Test
         }
 
         [TestMethod]
-        public void Test_GetListOfProdutoByNomeProduto()
+        public void Test_GetListOfProdutoByNomeProduto_Com_Retorno()
         {
             //arrange
             var produtoRepository = Substitute.For<IProdutoRepository>();
@@ -104,7 +104,7 @@ namespace ITIX.Test
         }
 
         [TestMethod]
-        public void Test_GetListOfProdutoByNomeProduto_NomeProduto_Branco()
+        public void Test_GetListOfProdutoByNomeProduto_Sem_Retorno()
         {
             //arrange
             var produtoRepository = Substitute.For<IProdutoRepository>();

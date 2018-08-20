@@ -1,11 +1,11 @@
-namespace ITIX.EntityFramework.Migrations
+namespace ITIX.Persistence.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<ITIX.EntityFramework.EntityFramework.ITIXDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<ITIX.Persistence.EntityFramework.ITIXDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace ITIX.EntityFramework.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ITIX.EntityFramework.EntityFramework.ITIXDbContext context)
+        protected override void Seed(ITIX.Persistence.EntityFramework.ITIXDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

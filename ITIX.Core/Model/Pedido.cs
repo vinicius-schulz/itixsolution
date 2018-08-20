@@ -1,8 +1,8 @@
-﻿using ITIX.Core.Model.Base;
+﻿using ITIX.Domain.Model.Base;
 using System;
 using System.Collections.Generic;
 
-namespace ITIX.Core.Model
+namespace ITIX.Domain.Model
 {
     public class Pedido : EntityBase
     {

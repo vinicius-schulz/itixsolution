@@ -1,5 +1,5 @@
 ﻿using ITIX.Application.Business;
-using ITIX.Core.Model;
+using ITIX.Domain.Model;
 using ITIX.ViewForm.Ninject;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-namespace ITIX.EntityFramework.Migrations
+namespace ITIX.Persistence.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

@@ -69,7 +69,7 @@
             // 
             // pedidoBindingSource
             // 
-            this.pedidoBindingSource.DataSource = typeof(ITIX.Core.Model.Pedido);
+            this.pedidoBindingSource.DataSource = typeof(ITIX.Domain.Model.Pedido);
             // 
             // idDataGridViewTextBoxColumn
             // 

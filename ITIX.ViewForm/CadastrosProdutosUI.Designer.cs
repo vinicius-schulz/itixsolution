@@ -134,7 +134,7 @@
             // 
             // produtoBindingSource
             // 
-            this.produtoBindingSource.DataSource = typeof(ITIX.Core.Model.Produto);
+            this.produtoBindingSource.DataSource = typeof(ITIX.Domain.Model.Produto);
             // 
             // idDataGridViewTextBoxColumn
             // 

@@ -121,7 +121,7 @@
             // 
             // itemPedidoBindingSource
             // 
-            this.itemPedidoBindingSource.DataSource = typeof(ITIX.Core.Model.ItemPedido);
+            this.itemPedidoBindingSource.DataSource = typeof(ITIX.Domain.Model.ItemPedido);
             // 
             // richTextBoxDescricao
             // 

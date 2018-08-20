@@ -1,5 +1,5 @@
 ﻿using ITIX.Application.Business;
-using ITIX.Core.Model;
+using ITIX.Domain.Model;
 using System;
 using System.Windows.Forms;
 

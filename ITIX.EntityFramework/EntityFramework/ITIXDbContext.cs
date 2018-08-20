@@ -1,8 +1,8 @@
-﻿using ITIX.Core.Model;
-using ITIX.EntityFramework.Mappings;
+﻿using ITIX.Domain.Model;
+using ITIX.Persistence.Mappings;
 using System.Data.Entity;
 
-namespace ITIX.EntityFramework.EntityFramework
+namespace ITIX.Persistence.EntityFramework
 {
     public class ITIXDbContext : DbContext
     {

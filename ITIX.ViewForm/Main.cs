@@ -1,5 +1,5 @@
 ﻿using ITIX.Application.Business;
-using ITIX.Domain.Repositories;
+using ITIX.Persistence.Repositories;
 using ITIX.ViewForm.Ninject;
 using System;
 using System.Collections.Generic;

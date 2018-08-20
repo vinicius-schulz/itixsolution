@@ -1,17 +1,17 @@
 ﻿using ITIX.Application.Business.Base;
-using ITIX.Core.Model;
-using ITIX.EntityFramework.Repository;
+using ITIX.Domain.Model;
+using ITIX.Persistence.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ITIX.EntityFramework.Repository.Base;
-using ITIX.EntityFramework.EntityFramework;
-using ITIX.Core.Model.Base;
-using ITIX.Domain.Repositories;
+using ITIX.Persistence.Repository.Base;
+using ITIX.Persistence.EntityFramework;
+using ITIX.Domain.Model.Base;
+using ITIX.Persistence.Repositories;
 
 namespace ITIX.Application.Business
 {
-    public class ProdutoBusiness
+    public class ProdutoBusiness : BaseBusiness
     {
         private readonly IProdutoRepository produtoRepository;
         public ProdutoBusiness(IProdutoRepository produtoRepository)

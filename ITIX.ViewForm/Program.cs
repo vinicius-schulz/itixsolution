@@ -4,7 +4,7 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ITIX.EntityFramework.Migrations;
+using ITIX.Persistence.Migrations;
 using ITIX.ViewForm.Ninject;
 
 namespace ITIX.ViewForm

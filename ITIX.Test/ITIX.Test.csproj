@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="ProdutoBusinessUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PedidoBusinessUnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

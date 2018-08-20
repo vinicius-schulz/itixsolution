@@ -1,11 +1,11 @@
-﻿using ITIX.Core.Model.Base;
+﻿using ITIX.Domain.Model.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITIX.Domain.Repositories
+namespace ITIX.Persistence.Repositories
 {
     public interface IBaseRepository<T> where T : EntityBase
     {
@@ -18,7 +18,5 @@ namespace ITIX.Domain.Repositories
         T Get(int id);
         IQueryable<T> All();
         void Save();
-        Task SaveAsync();
-        void ExecuteSql(string sql);
     }
 }

@@ -1,20 +1,18 @@
 ﻿using ITIX.Application.Business.Base;
-using ITIX.Core.Model;
-using ITIX.EntityFramework.Repository;
+using ITIX.Domain.Model;
+using ITIX.Persistence.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
-using ITIX.EntityFramework.EntityFramework;
+using ITIX.Persistence.EntityFramework;
 using System.Data.Entity;
-using ITIX.Domain.Repositories;
+using ITIX.Persistence.Repositories;
 
 namespace ITIX.Application.Business
 {
-    public class PedidoBusiness
+    public class PedidoBusiness : BaseBusiness
     {
-
-        private ItemPedidoBusiness bnsItemPedido;
         private readonly IPedidoRepository PedidoRepository;
         private readonly IProdutoRepository ProdutoRepository;
 

@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201808150113025_inicial.Designer.cs">
       <DependentUpon>201808150113025_inicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\IBaseRepository.cs" />
+    <Compile Include="Repositories\IItemPedidoRepository.cs" />
+    <Compile Include="Repositories\IPedidoRepository.cs" />
+    <Compile Include="Repositories\IProdutoRepository.cs" />
     <Compile Include="Repository\Base\BaseRepository.cs" />
     <Compile Include="EntityFramework\ITIXDbContext.cs" />
     <Compile Include="Repository\Base\IUnitOfWork.cs" />

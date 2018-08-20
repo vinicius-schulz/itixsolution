@@ -1,14 +1,14 @@
 ﻿using ITIX.Application.Business.Base;
-using ITIX.Core.Model;
-using ITIX.EntityFramework.EntityFramework;
-using ITIX.EntityFramework.Repository;
+using ITIX.Domain.Model;
+using ITIX.Persistence.EntityFramework;
+using ITIX.Persistence.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace ITIX.Application.Business
 {
-    public class ItemPedidoBusiness 
+    public class ItemPedidoBusiness : BaseBusiness
     {
         public double CalculateValorTotal(ItemPedido itemPedido)
         {
